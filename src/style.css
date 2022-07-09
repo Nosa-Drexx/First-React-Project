@@ -1,0 +1,182 @@
+body {
+    margin: 0px; 
+    padding: 0px;
+    box-sizing: border-box;
+}
+/* div {
+    margin-left: 10px;
+} */
+.modeHolder{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 0.2rem;
+}
+.modeInfo{
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    text-align: center;
+    background-color: rgba(255, 255, 0, 0.5);
+    padding: 0.5rem 0;
+}
+.modes{
+    background-color: cyan;
+    color: maroon;
+    font-size: 1.5rem;
+    border: none;
+    box-shadow: 1px 0px 3px rgba(0,0,0,0.6);
+    padding: 0.3rem 1rem;
+}
+.modes:hover {
+    cursor: pointer;
+    background-color: orange;
+    color: blue;
+}
+.mainContainer {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+.userData{
+    display: flex;
+    align-items: center;
+    flex-flow:column wrap;
+}
+.red {
+    color: red;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+#intro {
+    font-size: 2rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#game-container {
+    display: flex;
+    width: 97%;
+    height: 400px;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+
+}
+#game-container button {
+    border: 1px solid black;
+    background-color: white;
+    width: 32%;
+    height: 30%;
+    border-radius: 5px;
+    font-size: 6rem;
+    text-align: center;
+}
+#game-container button:focus {
+    border: 3px solid black;
+    border-radius: 5px;
+    width: 31%;
+}
+#game-container button:hover {
+    border: 3px solid black;
+    border-radius: 5px;
+    width: 31%;
+    cursor: pointer;
+}
+.score, #userScore {
+    width: 180px;
+    height: 50px; 
+    font-size: 2.5rem;
+    padding: 0px; 
+    margin-right: 5px;
+    border-bottom: 4px solid green;
+    border-radius: 5px 0 0 10px;
+    display: inline-block;
+    
+}
+#AIScore {
+    margin-left: 10px;
+    border-right: 2px solid green;
+    border-radius: 0 5px 10px 0;
+    color: red;
+}
+#userScore {
+    border-left: 2px solid green;
+    color: blue;
+    margin-right: 10px;
+}
+.user-character {
+    background-color: white;
+    border: none;
+    display: inline-block;
+    padding: 0.5rem;
+    margin-left: 10px;
+}
+.user-character, span {
+    color: green;
+    font-size: 4rem;
+}
+.fa-xmark{
+    color: green;
+}
+.fa-o {
+    color: red;
+}
+.user-character:focus {
+    border: 3px solid black;
+    border-radius: 5px;
+}
+.user-character:hover {
+    border: 3px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.reset-data-Btn {
+    font-size: 1.5rem;
+    border-radius: 10px;
+    background-color: aqua;
+    color: green;
+}
+.reset-data-Btn:hover,.reset-data-Btn:focus  {
+    font-size: 1.7rem;
+    border-radius: 10px;
+    background-color: aqua;
+    color: red;
+    border: 3px solid black;
+}
+.loading-container {
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    z-index: 2;
+    background-color: black;
+    /*display: none;*/
+}
+.loading {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top-color: red;
+    border-left-color: green;
+    border-right-color: blue;
+    border-bottom-color: blueviolet;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    -moz-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+@keyframes spin {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+@media(min-width:500px) {
+    #game-container { 
+        width: 400px;
+    }
+}
