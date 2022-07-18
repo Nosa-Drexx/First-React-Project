@@ -94,7 +94,7 @@ function App() {
       <p className="modeInfo">
         ❗ Your Current Difficulty Is{" "}
         <span className="red">
-          {localStorage.getItem("Mode").toUpperCase()}
+          {localStorage.getItem("Mode")}
         </span>
       </p>
       <div ref={modeHolder} className="modeHolder">
