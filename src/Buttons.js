@@ -42,7 +42,6 @@ function Buttons({ allChar }) {
   }, [counter]); //eslint-disable-line
 
   function hold(e) {
-    console.log(e.target.innerHTML);
     if (allChar.char.userCharacter === null) {
       window.alert(`Haven't chosen a character please do`);
     }
