@@ -42,10 +42,11 @@ function Buttons({ allChar }) {
   }, [counter]); //eslint-disable-line
 
   function hold(e) {
+    console.log(e.target.innerHTML);
     if (allChar.char.userCharacter === null) {
       window.alert(`Haven't chosen a character please do`);
     }
-    if (e.target.innerHTML === "") {
+    else if (e.target.innerHTML === " " ) {
       e.target.innerHTML = allChar.char.userCharacter;
 
       setCounter((prev) => {
@@ -55,7 +56,7 @@ function Buttons({ allChar }) {
         // prevent from running when all are boxes filled up
         recursiveChecker();
       }
-    } else {
+    } else  {
       alert(`Box is already filled please select an empty box`);
     }
   }
@@ -90,7 +91,7 @@ if still filled keeps on recalling itself */
   function recursiveChecker() {
     var val = AIplays();
 
-    if (buttons[val].innerHTML === "") {
+    if (buttons[val].innerHTML === " ") {
       //console.log(val);
       buttons[val].innerHTML = allChar.char.Ai;
 
@@ -112,7 +113,7 @@ if still filled keeps on recalling itself */
             id={keys}
             className="button"
             onClick={hold}
-          ></button>
+          > </button>
         );
       })}
     </div>

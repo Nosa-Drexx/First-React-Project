@@ -83,7 +83,7 @@ function App() {
 
   useEffect(() => {
     if (clearLog) {
-      AI.current.innerHTML = `AI &nbsp; &nbsp; &nbsp; &nbsp; ${0}`;
+      AI.current.innerHTML = `AI &nbsp; &nbsp; &nbsp; ${0}`;
       US.current.innerHTML = `User &nbsp; &nbsp${0}`;
     }
   }, [clearLog]);
