@@ -6,113 +6,69 @@ export default function winnerCheck(
 ) {
   var characterHolder = character.current.children;
   // console.log(characterHolder);
-  // User check
+  // User check && AI Check
+  function whoWon(Character,who,whoScored){
   if (
-    characterHolder[0].innerHTML === userCharacter &&
-    characterHolder[1].innerHTML === userCharacter &&
-    characterHolder[2].innerHTML === userCharacter
+    characterHolder[0].innerHTML === Character &&
+    characterHolder[1].innerHTML === Character &&
+    characterHolder[2].innerHTML === Character
   ) {
-    return sidePieceUser(load);
+    return sidePiece(load,who,whoScored);
   } else if (
-    characterHolder[0].innerHTML === userCharacter &&
-    characterHolder[3].innerHTML === userCharacter &&
-    characterHolder[6].innerHTML === userCharacter
+    characterHolder[0].innerHTML === Character &&
+    characterHolder[3].innerHTML === Character &&
+    characterHolder[6].innerHTML === Character
   ) {
-    return sidePieceUser(load);
+    return sidePiece(load,who,whoScored);
   } else if (
-    characterHolder[0].innerHTML === userCharacter &&
-    characterHolder[4].innerHTML === userCharacter &&
-    characterHolder[8].innerHTML === userCharacter
+    characterHolder[0].innerHTML === Character &&
+    characterHolder[4].innerHTML === Character &&
+    characterHolder[8].innerHTML === Character
   ) {
-    return sidePieceUser(load);
+    return sidePiece(load,who,whoScored);
   } else if (
-    characterHolder[2].innerHTML === userCharacter &&
-    characterHolder[4].innerHTML === userCharacter &&
-    characterHolder[6].innerHTML === userCharacter
+    characterHolder[2].innerHTML === Character &&
+    characterHolder[4].innerHTML === Character &&
+    characterHolder[6].innerHTML === Character
   ) {
-    return sidePieceUser(load);
+    return sidePiece(load,who,whoScored);
   } else if (
-    characterHolder[2].innerHTML === userCharacter &&
-    characterHolder[5].innerHTML === userCharacter &&
-    characterHolder[8].innerHTML === userCharacter
+    characterHolder[2].innerHTML === Character &&
+    characterHolder[5].innerHTML === Character &&
+    characterHolder[8].innerHTML === Character
   ) {
-    return sidePieceUser(load);
+    return sidePiece(load,who,whoScored);
   } else if (
-    characterHolder[6].innerHTML === userCharacter &&
-    characterHolder[7].innerHTML === userCharacter &&
-    characterHolder[8].innerHTML === userCharacter
+    characterHolder[6].innerHTML === Character &&
+    characterHolder[7].innerHTML === Character &&
+    characterHolder[8].innerHTML === Character
   ) {
-    return sidePieceUser(load);
+    return sidePiece(load,who,whoScored);
   } else if (
-    characterHolder[1].innerHTML === userCharacter &&
-    characterHolder[4].innerHTML === userCharacter &&
-    characterHolder[7].innerHTML === userCharacter
+    characterHolder[1].innerHTML === Character &&
+    characterHolder[4].innerHTML === Character &&
+    characterHolder[7].innerHTML === Character
   ) {
-    return sidePieceUser(load);
+    return sidePiece(load,who,whoScored);
   } else if (
-    characterHolder[3].innerHTML === userCharacter &&
-    characterHolder[4].innerHTML === userCharacter &&
-    characterHolder[5].innerHTML === userCharacter
+    characterHolder[3].innerHTML === Character &&
+    characterHolder[4].innerHTML === Character &&
+    characterHolder[5].innerHTML === Character
   ) {
-    return sidePieceUser(load);
+    return sidePiece(load,who,whoScored);
   }
-
-  /// AI Check
-  else if (
-    characterHolder[0].innerHTML === computerCharacter &&
-    characterHolder[1].innerHTML === computerCharacter &&
-    characterHolder[2].innerHTML === computerCharacter
-  ) {
-    return sidePieceAi(load);
-  } else if (
-    characterHolder[0].innerHTML === computerCharacter &&
-    characterHolder[3].innerHTML === computerCharacter &&
-    characterHolder[6].innerHTML === computerCharacter
-  ) {
-    return sidePieceAi(load);
-  } else if (
-    characterHolder[0].innerHTML === computerCharacter &&
-    characterHolder[4].innerHTML === computerCharacter &&
-    characterHolder[8].innerHTML === computerCharacter
-  ) {
-    return sidePieceAi(load);
-  } else if (
-    characterHolder[2].innerHTML === computerCharacter &&
-    characterHolder[4].innerHTML === computerCharacter &&
-    characterHolder[6].innerHTML === computerCharacter
-  ) {
-    return sidePieceAi(load);
-  } else if (
-    characterHolder[2].innerHTML === computerCharacter &&
-    characterHolder[5].innerHTML === computerCharacter &&
-    characterHolder[8].innerHTML === computerCharacter
-  ) {
-    return sidePieceAi(load);
-  } else if (
-    characterHolder[6].innerHTML === computerCharacter &&
-    characterHolder[7].innerHTML === computerCharacter &&
-    characterHolder[8].innerHTML === computerCharacter
-  ) {
-    return sidePieceAi(load);
-  } else if (
-    characterHolder[1].innerHTML === computerCharacter &&
-    characterHolder[4].innerHTML === computerCharacter &&
-    characterHolder[7].innerHTML === computerCharacter
-  ) {
-    return sidePieceAi(load);
-  } else if (
-    characterHolder[3].innerHTML === computerCharacter &&
-    characterHolder[4].innerHTML === computerCharacter &&
-    characterHolder[5].innerHTML === computerCharacter
-  ) {
-    return sidePieceAi(load);
+ 
   }
-  return false;
+  return whoWon(userCharacter,"You","UserScore") || whoWon(computerCharacter,"AI", "AiScore") || false;
 }
 
-function sidePieceUser(load) {
+
+function sidePiece(load,who,whoScored) {
+  var input;
+  if(who === "You"){input = `${who} Won`} else {input = `${who} Won better luck next time` }
+
   setTimeout(()=>{
-  if (window.confirm(`You Won`)) {
+  if (window.confirm(input)) {
     load.current.style.display = "flex";
     setTimeout(() => {
       window.location.reload();
@@ -126,31 +82,10 @@ function sidePieceUser(load) {
     }, 1000);
   }
 },500);
-  var userScoreUpdate = Number(localStorage.getItem("UserScore")) + 1; // gets updated with new score everytime the user wins
-  localStorage.setItem("UserScore", userScoreUpdate);
-  //console.log(userScoreUpdate);
+  var ScoreUpdate = Number(localStorage.getItem(whoScored)) + 1; // gets updated with new score everytime the user wins
+  localStorage.setItem(whoScored, ScoreUpdate);
+  //console.log(ScoreUpdate);
 
   return true;
 }
 
-function sidePieceAi(load) {
-  setTimeout(()=>{
-  if (window.confirm(`AI Won better luck next time`)) {
-    load.current.style.display = "flex";
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
-  } else {
-    alert(`about to restart End Game`);
-
-    load.current.style.display = "flex";
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
-  }
-},500);
-  var computerScoreUpdate = Number(localStorage.getItem("AiScore")) + 1; // gets updated with new score everytime the user wins
-  localStorage.setItem("AiScore", computerScoreUpdate);
-
-  return true;
-}

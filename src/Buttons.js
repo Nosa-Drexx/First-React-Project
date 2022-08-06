@@ -1,7 +1,7 @@
 import { useRef, memo, useEffect, useState } from "react";
 import winnerCheck from "./winnerCheck";
 import allfilled from "./aTie";
-import { watchUserMovement, computerTriesToWin } from "./Modes";
+import { aiSmartMovements } from "./Modes";
 
 function Buttons({ allChar }) {
   const gameContain = useRef();
@@ -75,11 +75,11 @@ function Buttons({ allChar }) {
     var pop = arr.pop();
 
     if (localStorage.getItem("Mode") === "Medium") {
-      pop = watchUserMovement(pop, gameContain, allChar.char.userCharacter);
+      pop = aiSmartMovements(pop, gameContain, allChar.char.userCharacter); //Watches userMovements and counter
     }
     if (localStorage.getItem("Mode") === "Hard") {
-      pop = watchUserMovement(pop, gameContain, allChar.char.userCharacter);
-      pop = computerTriesToWin(pop, gameContain, allChar.char.Ai);
+      pop = aiSmartMovements(pop, gameContain, allChar.char.userCharacter); //Watches userMovements and counter
+      pop = aiSmartMovements(pop, gameContain, allChar.char.Ai); //AI Tries to Score.
     }
 
     return pop;
