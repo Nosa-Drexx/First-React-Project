@@ -88,13 +88,14 @@ function App() {
     }
   }, [clearLog]);
 
-
   return (
     <>
       <p className="modeInfo">
         ❗ Your Current Difficulty Is{" "}
         <span className="red">
-          {localStorage.getItem("Mode")}
+          {localStorage.getItem("Mode")
+            ? localStorage.getItem("Mode").toUpperCase()
+            : "EASY"}
         </span>
       </p>
       <div ref={modeHolder} className="modeHolder">
@@ -135,11 +136,15 @@ function App() {
           <div>
             <div id="userScore" ref={US} className="score">
               User &nbsp; &nbsp;
-              {localStorage.getItem("UserScore")}
+              {localStorage.getItem("UserScore")
+                ? localStorage.getItem("UserScore")
+                : 0}
             </div>
             <div id="AIScore" ref={AI} className="score">
               AI &nbsp; &nbsp; &nbsp; &nbsp;
-              {localStorage.getItem("AiScore")}
+              {localStorage.getItem("AiScore")
+                ? localStorage.getItem("AiScore")
+                : 0}
             </div>
           </div>
         </div>

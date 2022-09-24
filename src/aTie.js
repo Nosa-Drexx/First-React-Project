@@ -16,12 +16,12 @@ export default function allfilled(character, load) {
 }
 
 function boxfilled(load) {
-  setTimeout(()=>{ 
-  alert(`Its a Tie, all boxes are filled, refreshing...`);
-
-  load.current.style.display = "flex";
   setTimeout(() => {
-    window.location.reload();
-  }, 1000);
-},500)
+    alert(`Its a Tie, all boxes are filled, refreshing...`);
+
+    load.current.style.display = "flex";
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  }, 500);
 }

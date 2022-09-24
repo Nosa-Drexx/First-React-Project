@@ -44,8 +44,7 @@ function Buttons({ allChar }) {
   function hold(e) {
     if (allChar.char.userCharacter === null) {
       window.alert(`Haven't chosen a character please do`);
-    }
-    else if (e.target.innerHTML === " " ) {
+    } else if (e.target.innerHTML === " ") {
       e.target.innerHTML = allChar.char.userCharacter;
 
       setCounter((prev) => {
@@ -55,7 +54,7 @@ function Buttons({ allChar }) {
         // prevent from running when all are boxes filled up
         recursiveChecker();
       }
-    } else  {
+    } else {
       alert(`Box is already filled please select an empty box`);
     }
   }
@@ -112,7 +111,9 @@ if still filled keeps on recalling itself */
             id={keys}
             className="button"
             onClick={hold}
-          > </button>
+          >
+            {" "}
+          </button>
         );
       })}
     </div>

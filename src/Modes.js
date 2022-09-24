@@ -148,4 +148,3 @@ export function aiSmartMovements(pop, character, characterSmart) {
   }
   return pop;
 }
-
